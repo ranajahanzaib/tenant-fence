@@ -1,0 +1,16 @@
+openapi: 3.0.3
+info: { title: Generic authorized API example, version: 1.0.0 }
+paths:
+  /api/item:
+    get:
+      operationId: item
+      parameters:
+        - { name: id, in: query, required: true, schema: { type: string } }
+      responses:
+        "200": { description: Private item with id, tenant_id, marker }
+        "403": { description: Forbidden }
+components:
+  securitySchemes:
+    bearer: { type: http, scheme: bearer }
+security:
+  - bearer: []

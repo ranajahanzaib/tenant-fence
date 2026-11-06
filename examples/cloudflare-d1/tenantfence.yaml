@@ -1,0 +1,47 @@
+# Required: paths are relative to this configuration, not the working directory.
+target:
+  label: Local D1 isolation lab
+  spec: openapi.yaml
+  base_url: http://127.0.0.1:8787
+  allowed_origins: [http://127.0.0.1:8787]
+  timeout_ms: 5000
+  max_response_bytes: 262144
+# Required: never place token values here. The seed script creates a local env file.
+tenants:
+  - name: alpha
+    selector: alpha
+    token_env: TENANTFENCE_ALPHA_TOKEN
+  - name: beta
+    selector: beta
+    token_env: TENANTFENCE_BETA_TOKEN
+resources:
+  - name: documents
+    discovery: listDocuments
+    collection_pointer: /items
+    id_pointer: /id
+    read: getDocument
+    id_parameter: documentId
+    owner_pointer: /tenant_id
+    marker_pointer: /content
+    collection: tenantDocuments
+    tenant_parameter: tenantId
+    export: exportDocument
+    export_format: json
+    # Optional active testing: ONLY disposable fixtures. Both flags must enable it.
+    mutation:
+      operation: updateDocument
+      disposable: true
+      value_pointer: /title
+      body_pointer: /title
+      body: { title: placeholder }
+    denial_statuses: [403, 404]
+    empty_collection_allowed: true
+execution:
+  max_requests: 200
+  max_resources_per_tenant: 2
+  max_concurrency: 1
+  requests_per_second: 20
+  safe_retries: 0
+  writes: true
+  exports: true
+  required: [read, collection, mutation, export]

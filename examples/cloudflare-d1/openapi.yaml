@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: TenantFence D1 lab
+  version: 1.0.0
+security:
+  - bearerAuth: []
+paths:
+  /health:
+    get:
+      operationId: health
+      security: []
+      responses:
+        "200": { description: Healthy }
+  /v1/documents:
+    get:
+      operationId: listDocuments
+      responses:
+        "200": { description: Authenticated tenant documents under items }
+  /v1/documents/{documentId}:
+    parameters:
+      - $ref: "#/components/parameters/DocumentId"
+    get:
+      operationId: getDocument
+      responses:
+        "200": { description: Owned document }
+        "404": { description: Missing or unauthorized }
+    patch:
+      operationId: updateDocument
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [title]
+              properties:
+                title: { type: string, maxLength: 200 }
+      responses:
+        "200": { description: Updated owned document }
+        "404": { description: Missing or unauthorized }
+  /v1/documents/{documentId}/export:
+    parameters:
+      - $ref: "#/components/parameters/DocumentId"
+    get:
+      operationId: exportDocument
+      responses:
+        "200": { description: Synchronous JSON export }
+        "404": { description: Missing or unauthorized }
+  /v1/tenants/{tenantId}/documents:
+    parameters:
+      - name: tenantId
+        in: path
+        required: true
+        schema: { type: string }
+    get:
+      operationId: tenantDocuments
+      responses:
+        "200": { description: Owned collection under items }
+        "403": { description: Tenant selector not authorized }
+components:
+  securitySchemes:
+    bearerAuth: { type: http, scheme: bearer }
+  parameters:
+    DocumentId:
+      name: documentId
+      in: path
+      required: true
+      schema: { type: string }

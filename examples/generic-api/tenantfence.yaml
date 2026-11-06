@@ -1,0 +1,30 @@
+# Illustrative external API. Replace the reserved example origin and fixture IDs.
+target:
+  label: Authorized staging API
+  spec: openapi.yaml
+  base_url: https://api.example.com
+  allowed_origins: [https://api.example.com]
+  timeout_ms: 5000
+  max_response_bytes: 262144
+tenants:
+  - { name: alpha, selector: alpha, token_env: TENANTFENCE_ALPHA_TOKEN }
+  - { name: beta, selector: beta, token_env: TENANTFENCE_BETA_TOKEN }
+resources:
+  - name: items
+    fixtures: { alpha: [alpha-disposable-item], beta: [beta-disposable-item] }
+    collection_pointer: ""
+    id_pointer: /id
+    read: item
+    id_parameter: id
+    owner_pointer: /tenant_id
+    marker_pointer: /marker
+    denial_statuses: [403]
+execution:
+  max_requests: 30
+  max_resources_per_tenant: 1
+  max_concurrency: 1
+  requests_per_second: 5
+  safe_retries: 0
+  writes: false
+  exports: false
+  required: [read]

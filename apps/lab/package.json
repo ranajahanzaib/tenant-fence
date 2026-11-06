@@ -1,0 +1,25 @@
+{
+  "name": "tenantfence-lab",
+  "private": true,
+  "packageManager": "pnpm@10.30.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --local --ip 127.0.0.1 --port 8787",
+    "dev:vulnerable": "node scripts/vulnerable.mjs",
+    "prepare:db": "node scripts/seed.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "format": "prettier --write src local scripts test *.json *.jsonc *.ts",
+    "lint": "prettier --check src local scripts test *.json *.jsonc *.ts",
+    "types": "wrangler types"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6",
+    "esbuild": "0.28.2",
+    "miniflare": "5.20261023.3-beta",
+    "prettier": "3.9.10",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5",
+    "wrangler": "4.156.0"
+  }
+}
