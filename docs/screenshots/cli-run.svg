@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 440" width="880" height="440">
+  <style>
+    .window { fill: #10151c; stroke: #364355; stroke-width: 1.5px; rx: 10px; }
+    .header { fill: #18202b; }
+    .title { fill: #abbacc; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13px; font-weight: 500; }
+    .text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13px; }
+  </style>
+  <rect width="880" height="440" rx="10" class="window" />
+  <path d="M0,0 h880 v38 h-880 z" class="header" />
+  <circle cx="20" cy="19" r="6" fill="#ff5f56" />
+  <circle cx="38" cy="19" r="6" fill="#ffbd2e" />
+  <circle cx="56" cy="19" r="6" fill="#27c93f" />
+  <text x="440" y="24" text-anchor="middle" class="title">tenantfence run (vulnerable lab detection)</text>
+  <text class="text">
+<tspan x="24" y="85" fill="#87dccc" font-weight="bold">$ tenantfence run --config examples/cloudflare-d1/tenantfence.yaml --authorized --output reports/vulnerable</tspan>
+<tspan x="24" y="107" fill="#e5ecf3" font-weight="normal">TenantFence · executing 16 tenant boundary tests across 2 tenants</tspan>
+<tspan x="24" y="129" fill="#abbacc" font-weight="normal"></tspan>
+<tspan x="24" y="151" fill="#abbacc" font-weight="normal">  [read]       beta → alpha doc-1: GET /v1/documents/alpha-doc-1           [CONFIRMED FAILURE]</tspan>
+<tspan x="24" y="173" fill="#abbacc" font-weight="normal">  [read]       alpha → beta doc-2: GET /v1/documents/beta-doc-2            [CONFIRMED FAILURE]</tspan>
+<tspan x="24" y="195" fill="#abbacc" font-weight="normal">  [collection] beta → alpha:       GET /v1/tenants/alpha/documents         [PASSED (403)]</tspan>
+<tspan x="24" y="217" fill="#abbacc" font-weight="normal">  [collection] alpha → beta:       GET /v1/tenants/beta/documents          [PASSED (403)]</tspan>
+<tspan x="24" y="239" fill="#abbacc" font-weight="normal">  [export]     beta → alpha doc-1: GET /v1/documents/alpha-doc-1/export    [CONFIRMED FAILURE]</tspan>
+<tspan x="24" y="261" fill="#abbacc" font-weight="normal">  [export]     alpha → beta doc-2: GET /v1/documents/beta-doc-2/export    [CONFIRMED FAILURE]</tspan>
+<tspan x="24" y="283" fill="#abbacc" font-weight="normal">  [mutation]   beta → alpha doc-1: PATCH /v1/documents/alpha-doc-1          [CONFIRMED FAILURE]</tspan>
+<tspan x="24" y="305" fill="#abbacc" font-weight="normal">  [mutation]   alpha → beta doc-2: PATCH /v1/documents/beta-doc-2          [CONFIRMED FAILURE]</tspan>
+<tspan x="24" y="327" fill="#abbacc" font-weight="normal"></tspan>
+<tspan x="24" y="349" fill="#ffb1ad" font-weight="normal">Summary: 16 tests · 4 passed · 12 confirmed failures · 0 errors · 58 requests · 2960 ms · exit 1</tspan>
+<tspan x="24" y="371" fill="#e5ecf3" font-weight="normal">Reports: reports/vulnerable/report.html (interactive) · reports/vulnerable/report.json (versioned)</tspan>
+<tspan x="24" y="393" fill="#87dccc" font-weight="normal">Cleanup: all modified fixtures restored and verified via owner credentials</tspan>
+
+  </text>
+</svg>

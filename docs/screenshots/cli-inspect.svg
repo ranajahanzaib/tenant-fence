@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 390" width="880" height="390">
+  <style>
+    .window { fill: #10151c; stroke: #364355; stroke-width: 1.5px; rx: 10px; }
+    .header { fill: #18202b; }
+    .title { fill: #abbacc; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13px; font-weight: 500; }
+    .text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 13px; }
+  </style>
+  <rect width="880" height="390" rx="10" class="window" />
+  <path d="M0,0 h880 v38 h-880 z" class="header" />
+  <circle cx="20" cy="19" r="6" fill="#ff5f56" />
+  <circle cx="38" cy="19" r="6" fill="#ffbd2e" />
+  <circle cx="56" cy="19" r="6" fill="#27c93f" />
+  <text x="440" y="24" text-anchor="middle" class="title">tenantfence inspect</text>
+  <text class="text">
+<tspan x="24" y="85" fill="#87dccc" font-weight="bold">$ tenantfence inspect --config examples/cloudflare-d1/tenantfence.yaml</tspan>
+<tspan x="24" y="107" fill="#e5ecf3" font-weight="normal">TenantFence · offline execution plan</tspan>
+<tspan x="24" y="129" fill="#abbacc" font-weight="normal"></tspan>
+<tspan x="24" y="151" fill="#e5ecf3" font-weight="normal">GET   /v1/documents/{documentId}/export   [exportDocument]  — explicitly mapped</tspan>
+<tspan x="24" y="173" fill="#e5ecf3" font-weight="normal">GET   /v1/documents/{documentId}          [getDocument]     — explicitly mapped</tspan>
+<tspan x="24" y="195" fill="#e5ecf3" font-weight="normal">GET   /health                             [health]          — SKIPPED: advisory only</tspan>
+<tspan x="24" y="217" fill="#e5ecf3" font-weight="normal">GET   /v1/documents                       [listDocuments]   — explicitly mapped</tspan>
+<tspan x="24" y="239" fill="#e5ecf3" font-weight="normal">GET   /v1/tenants/{tenantId}/documents    [tenantDocuments] — explicitly mapped</tspan>
+<tspan x="24" y="261" fill="#e5ecf3" font-weight="normal">PATCH /v1/documents/{documentId}          [updateDocument]  — explicitly mapped</tspan>
+<tspan x="24" y="283" fill="#abbacc" font-weight="normal"></tspan>
+<tspan x="24" y="305" fill="#e5ecf3" font-weight="normal">Resource documents: read; collection=true; export=true; mutation=true</tspan>
+<tspan x="24" y="327" fill="#abbacc" font-weight="normal">At most 200 HTTP requests (including retries and reserved cleanup); 2 resources per tenant.</tspan>
+<tspan x="24" y="349" fill="#abbacc" font-weight="normal">Serial execution. Redirects disabled. Initial collection page only.</tspan>
+
+  </text>
+</svg>
